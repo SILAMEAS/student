@@ -24,14 +24,9 @@ public class UserService implements IUserService{
 
     @Override
     public Optional<User> getUserByEmail(String email) {
-        log.
-//        if(!UserAlreadyExit(email)){
-//            throw  new StudentNotFoundException("Email not found");
-//        }
         if(!UserAlreadyExit(email)){
             throw  new StudentNotFoundException("Email not found");
         }
-//        return userRepo.save(user);
         return userRepo.findByEmail(email);
     }
 
