@@ -1,4 +1,4 @@
-package com.dailycode.test.service;
+package com.dailycode.test.service.Student;
 
 import com.dailycode.test.exception.StudentAlreadyExitException;
 import com.dailycode.test.exception.StudentNotFoundException;
@@ -6,10 +6,12 @@ import com.dailycode.test.model.Student;
 import com.dailycode.test.reposity.StudentRepo;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class StudentService implements IStudentService{
   private final StudentRepo studentRepo;
 
@@ -48,7 +50,7 @@ public class StudentService implements IStudentService{
     if(!studentRepo.existsById(studentId)){
      throw  new StudentNotFoundException("Sorry, can't delete student not found");
     }
-
+    studentRepo.deleteById(studentId);
   }
 //  Method
 private boolean StudentAlreadyExit(String email) {

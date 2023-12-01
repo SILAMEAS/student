@@ -1,4 +1,4 @@
-package com.dailycode.test.service;
+package com.dailycode.test.service.Student;
 
 import com.dailycode.test.model.Student;
 import java.util.List;

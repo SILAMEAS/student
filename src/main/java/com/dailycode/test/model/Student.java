@@ -4,11 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Generated;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 import org.hibernate.annotations.NaturalId;
 
 @Entity
@@ -21,9 +19,13 @@ public class Student {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  @NotEmpty(message = "firstName can't be null")
   private String firstName;
+  @NotEmpty(message = "lastName can't be null")
   private String lastName;
+  @NotEmpty(message = "department can't be null")
   private String department;
+  @NotEmpty(message = "email can't be null")
   @NaturalId(mutable = true)
   private String email;
 
