@@ -7,6 +7,7 @@ import com.dailycode.test.reposity.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,6 +29,11 @@ public class UserService implements IUserService{
             throw  new StudentNotFoundException("Email not found");
         }
         return userRepo.findByEmail(email);
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return userRepo.findAll();
     }
 
     @Override

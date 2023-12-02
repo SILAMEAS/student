@@ -26,8 +26,12 @@ public class UserController {
     return new ResponseEntity<>(userService.createUser(user), HttpStatus.OK);
   }
 
+  @GetMapping("/users")
+  ResponseEntity<List<User>> getStudent() {
+    return new ResponseEntity<List<User>>(userService.getUsers(), HttpStatus.OK);
+  }
   @GetMapping("/user")
-  ResponseEntity<Optional<User>> getStudent(@RequestBody String email) {
+  ResponseEntity<Optional<User>> getStudents(@RequestParam(name = "email") String email) {
     return new ResponseEntity<>(userService.getUserByEmail(email), HttpStatus.OK);
   }
   @DeleteMapping("/user/{id}")
@@ -39,5 +43,4 @@ public class UserController {
   ResponseEntity<User> updateStudent(@PathVariable("id") User user,Long id) {
     return new ResponseEntity<>( userService.updateUserById(id,user), HttpStatus.OK);
   }
-
 }
